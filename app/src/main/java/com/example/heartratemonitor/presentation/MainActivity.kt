@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener
             override fun run()
             {
                 moveTextView()
-                handler.postDelayed(this, 15_000)
+                handler.postDelayed(this, 10_000)
             }
         }
         handler.post(randomPositionRunnable)
@@ -141,7 +141,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener
     {
         val parentLayout = heartRateTextView.parent as? android.widget.RelativeLayout
         parentLayout?.let {
-            val diameter = it.width
+            //val diameter = it.width
+
+            val diameter = 450.0
             val center = diameter / 2f
             val cutRadius = center * 0.8f
 
