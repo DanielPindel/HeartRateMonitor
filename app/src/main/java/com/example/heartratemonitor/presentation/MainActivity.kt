@@ -141,20 +141,24 @@ class MainActivity : AppCompatActivity(), SensorEventListener
     {
         val parentLayout = heartRateTextView.parent as? android.widget.RelativeLayout
         parentLayout?.let {
-            //val diameter = it.width
+            if (parentLayout != null && parentLayout.isAttachedToWindow)
+            {
+                val diameter = it.width.toFloat()
 
-            val diameter = 450.0
-            val center = diameter / 2f
-            val cutRadius = center * 0.8f
+                val center = diameter / 2f
+                val cutRadius = center * 0.8f
 
-            val angle = Random.nextDouble(0.0, 2 * Math.PI)
-            val distance = Random.nextDouble(0.0, cutRadius.toDouble())
+                val angle = Random.nextDouble(0.0, 2 * Math.PI)
+                val distance = Random.nextDouble(0.0, cutRadius.toDouble())
 
-            val randomX = (center + distance * cos(angle) - heartRateTextView.width / 2).toFloat()
-            val randomY = (center + distance * sin(angle) - heartRateTextView.height / 2).toFloat()
+                val randomX =
+                    (center + distance * cos(angle) - heartRateTextView.width / 2).toFloat()
+                val randomY =
+                    (center + distance * sin(angle) - heartRateTextView.height / 2).toFloat()
 
-            heartRateTextView.x = randomX
-            heartRateTextView.y = randomY
+                heartRateTextView.x = randomX
+                heartRateTextView.y = randomY
+            }
         }
     }
 }

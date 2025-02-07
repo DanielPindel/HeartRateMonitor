@@ -27,6 +27,16 @@ android {
             )
         }
     }
+    androidComponents {
+        onVariants { variant ->
+            variant.outputs.forEach { output ->
+                if(output is com.android.build.api.variant.impl.VariantOutputImpl)
+                {
+                    output.outputFileName = "HeartRateMonitor.apk"
+                }
+            }
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
